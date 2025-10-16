@@ -1,4 +1,4 @@
-package com.example.code;
+package net.jwillb.listycity;
 
 import android.os.Bundle;
 

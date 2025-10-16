@@ -3,13 +3,18 @@ plugins {
 }
 
 android {
-    namespace = "com.example.code"
-    compileSdk = 35
+    tasks.withType<Test>{
+        useJUnitPlatform()
+    }
+    namespace = "net.jwillb.listycity"
+    compileSdk {
+        version = release(36)
+    }
 
     defaultConfig {
-        applicationId = "com.example.code"
+        applicationId = "net.jwillb.listycity"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -32,7 +37,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -40,4 +44,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation(files("/opt/android-sdk/platforms/android-35/android.jar"))
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.0.1")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.0.1")
 }
